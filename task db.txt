@@ -1,0 +1,89 @@
+CREATE DATABASE taskdb;
+USE taskdb;
+
+INSERT INTO tasks(title, description, status, due_date) VALUES
+('Complete Project', 'Finish Task Management Application', 'Completed', '2026-06-25'),
+
+('Submit Report', 'Submit Final Project Report', 'Completed', '2026-06-20'),
+
+('Prepare Presentation', 'Create PPT for Project Review', 'Pending', '2026-06-28'),
+
+('Team Meeting', 'Discuss Project Progress', 'In Progress', '2026-06-22'),
+
+('Database Design', 'Create ER Diagram and Tables', 'Completed', '2026-06-18'),
+
+('Frontend Development', 'Design Responsive UI', 'In Progress', '2026-06-24'),
+
+('Backend API Testing', 'Test REST Endpoints', 'Pending', '2026-06-26'),
+
+('Bug Fixing', 'Resolve Dashboard Issues', 'In Progress', '2026-06-21'),
+
+('Documentation', 'Prepare Project Documentation', 'Pending', '2026-06-30'),
+
+('Code Review', 'Review Team Source Code', 'Completed', '2026-06-19'),
+
+('Deploy Application', 'Deploy to Production Server', 'Pending', '2026-07-01'),
+
+('Security Testing', 'Check Authentication Module', 'In Progress', '2026-06-27'),
+
+('Performance Optimization', 'Improve Application Speed', 'Pending', '2026-07-03'),
+
+('User Acceptance Testing', 'Collect User Feedback', 'Pending', '2026-07-05'),
+
+('Final Submission', 'Submit Complete Project', 'Pending', '2026-07-10');
+USE taskdb;
+SELECT * FROM users;
+SELECT * FROM tasks;
+UPDATE tasks
+SET status = 'Completed'
+WHERE id = 1;
+DESCRIBE users;
+SELECT COUNT(*) AS total_tasks
+FROM tasks;
+SELECT * FROM users;
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    email VARCHAR(255),
+    password VARCHAR(255),
+    role VARCHAR(50)
+);
+SHOW TABLES;
+SELECT * FROM tasks
+WHERE status = 'Pending';
+DELETE FROM tasks
+WHERE id = 2;
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) DEFAULT 'USER'
+);
+CREATE TABLE tasks (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    status VARCHAR(50) DEFAULT 'Pending',
+    due_date DATE
+);
+INSERT INTO tasks(title, description, status, due_date)
+VALUES
+('Complete Project',
+ 'Finish Task Management Application',
+ 'Pending',
+ '2026-06-25'),
+
+('Prepare Presentation',
+ 'Create PPT for Project Review',
+ 'In Progress',
+ '2026-06-22'),
+
+('Submit Report',
+ 'Submit Final Project Report',
+ 'Completed',
+ '2026-06-20');
+INSERT INTO users(username, email, password, role)
+VALUES
+('admin', 'admin@gmail.com', 'admin123', 'ADMIN'),
+('john', 'john@gmail.com', 'john123', 'USER');
